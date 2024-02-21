@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import getProducts from "../../api/getProducts";
+import AppContext from "../../context/AppContext";
 
 
 function SearchBar() {
 
+  const {setProducts, setLoading} = useContext(AppContext);
   const [searchValue, setSearchValue] = useState("");
 
+  const handleSearch = async (event)=>{
+    event.preventDefault();
+    setLoading(true);
+    
+    const products = await getProducts(searchValue);
+    
+    setProducts(products);
+    setLoading(false);
+    setSearchValue("");
+  };
+
   return(
-    <form className="flex w-full justify-between pr-3 shadow-md max-w-lg gap-3.5 ">   
+    <form className="flex w-full justify-between pr-3 shadow-md max-w-lg gap-3.5 " onSubmit={handleSearch}>   
       <label htmlFor="default-search" className="mb-2 w-full max-w-lg text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
       <div className="max-w-lg w-full relative">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

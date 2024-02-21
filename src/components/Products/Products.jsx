@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect,  } from "react";
 import getProducts from "../../api/getProducts";
 import ProductsCards from "./ProductsCards";
+import Loading from "../Loading/Loading";
+import AppContext from "../../context/AppContext";
 
 function Products() {
 
-  const [products,setProducts] = useState([]);
-
+  const {products,setProducts, loading, setLoading} = useContext(AppContext);
+  
   useEffect(()=> {
     getProducts("iphone")
       .then((response)=>{
         setProducts(response);
+        setLoading(false);
       });
   },[]);
 
-  console.log(products);
+  
 
   return(
-    <section className="px-5 pt-28 pb-12 grid grid-cols-4 gap-5 ">
-      {
-        products.map((product) => <ProductsCards key={product.id} data = {product}/>)
-      }
-    </section>
+    (loading ? <Loading /> :<section className="px-5 pt-28 pb-12 grid grid-cols-4 gap-5 container ">
+      {products.map((product) => <ProductsCards key={product.id} data = {product}/>)}
+    </section>)
+    
   );
 
 }
