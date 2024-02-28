@@ -19,7 +19,7 @@ function ProductsCards({data}) {
 
 
   return(
-    <section className="w-full \ max-w-xs hover:shadow-xl text-opacity-10 m-0 flex flex-col cursor-pointer mx-auto  relative  border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <section className="w-full  max-w-xs hover:shadow-xl text-opacity-10 m-0 flex flex-col cursor-pointer mx-auto  relative  border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <img className="p-4 w-full rounded-xl"
         src={thumbnail.replace(/\w\.jpg/gi, "W.jpg")}
         alt="Imagem do produto" 

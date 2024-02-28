@@ -47,7 +47,7 @@ function CartItens({ data, onPriceUpdate }) {
         <div className="flex flex-row text-center w-28  border-0  border-b-2 border-gray-700 appearance-none ">
           <label htmlFor="underline_select" className="sr-only">Unidades</label>
           <input 
-            className="block py-2.5 px-0 w-12 text-sm text-center text-gray-400 bg-transparent appearance-none dark:text-gray-400 focus:outline-none focus:ring-0  peer " 
+            className="block py-2.5 px-0 w-12 text-sm text-center cursor-pointer text-gray-400 bg-transparent appearance-none dark:text-gray-400 focus:outline-none focus:ring-0  peer " 
             onChange={handleSelect} 
             value={selectedQuantity}
             type="number" min="1" max={String(available_quantity)}
